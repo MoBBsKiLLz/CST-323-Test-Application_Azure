@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layouts/defaultTemplate">
+<head>
+	<meta charset="UTF-8">
+	<title>Products</title>
+</head>
+<body>
+	<h2>Products</h2>
+	<div layout:fragment="content">
+		<table style="width:50%">
+			<thead>
+				<tr>
+					<th style="text-align:center">Name</th>
+					<th style="text-align:center">Description</th>
+					<th style="text-align:center">Price</th>
+					<th style="text-align:center">Quantity</th>
+					<th style="text-align:center">Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:if="${products.empty}"}>
+					<td style="text-align:center" colspan="4"> No Products Available </td>
+				</tr>
+				<tr th:each="product : ${products}">
+					<td style="text-align:center"><h5 th:text="${product.name}">Product Name</h5></td>
+					<td style="text-align:center"><h5 th:text="${product.description}">This is the products description</h5></td>
+					<td style="text-align:center"><h5 th:text="${product.price}">1.00</h5></td>
+					<td style="text-align:center"><h5 th:text="${product.quantity}">1</h5></td>
+					<td style="text-align:center">
+						<form th:action="@{/product/delete/{id}(id=${product.id})}" method="post">
+							<!-- Update button -->
+							<a class="btn btn-primary btn-xs" th:href="@{/product/edit/{id}(id=${product.id})}">Edit</a>
+			                <!-- Delete button -->
+			                <button type="submit" class="btn btn-danger btn-xs">Delete</button>
+			            </form>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+</body>
+</html>
