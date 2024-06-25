@@ -2,6 +2,9 @@ package com.gcu.business;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.gcu.data.ProductDataService;
@@ -16,6 +19,9 @@ public class ProductService implements ProductServiceInterface {
     @Autowired
 	private ProductDataService service;
     
+    // SLF4J Logger
+    private static final Logger logger = LoggerFactory.getLogger(ProductService.class);
+    
     /**
      * Creates a new product.
      * @param name The name of the product.
@@ -28,8 +34,10 @@ public class ProductService implements ProductServiceInterface {
     public ProductEntity createProduct(String name, String description, float price, int quantity) {
         ProductEntity productEntity = new ProductEntity(name, description, price, quantity);
         if (service.create(productEntity)) {
+            logger.info("Product created: " + productEntity.getName());
             return productEntity;
         }
+        logger.error("Failed to create product.");
         return null;
     }
     
@@ -47,6 +55,7 @@ public class ProductService implements ProductServiceInterface {
         for(ProductEntity entity : productsEntity) {
             productsDomain.add(new ProductModel(entity.getId(), entity.getName(), entity.getDescription(), entity.getPrice(), entity.getQuantity()));
         }
+        logger.info("Products retrieved.");
         return productsDomain;
     }
     
@@ -59,6 +68,7 @@ public class ProductService implements ProductServiceInterface {
     public ProductModel getProductById(Long id) {
         ProductEntity entity = service.findById(id);
         ProductModel product = new ProductModel(entity.getId(), entity.getName(), entity.getDescription(), entity.getPrice(), entity.getQuantity());
+        logger.info("Product id=" + product.getId() + " found.");
         return product;
     }
 
@@ -80,6 +90,7 @@ public class ProductService implements ProductServiceInterface {
         
         // Save the product with updates
         service.update(existingProduct);
+        logger.info("Product id=" + existingProduct.getId() + " has been updated.");
     }
     
     /**
@@ -93,7 +104,9 @@ public class ProductService implements ProductServiceInterface {
         ProductEntity existingProduct = service.findById(id);
         
         //Delete the identified product
-        service.delete(existingProduct);      
+        service.delete(existingProduct);  
+        
+        logger.info("Product id=" + existingProduct.getId() + " was deleted.");
     }
     
     /**
