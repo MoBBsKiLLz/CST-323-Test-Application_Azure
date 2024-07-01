@@ -1,5 +1,7 @@
 package com.gcu.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -12,6 +14,9 @@ import com.gcu.model.LoginModel;
 @Controller
 @RequestMapping("/")
 public class LoginController {
+	// SLF4J Logger
+    private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
+    
 	@GetMapping("/login")
 	public String display(Model model) {
 		// Display Login Form View
@@ -23,8 +28,8 @@ public class LoginController {
 	
 	@PostMapping("/doLogin")
 	public String doLogin(LoginModel loginModel, BindingResult bindingResult, Model model) {
-		// Print the form values out
-		System.out.println(String.format("Forms with Username of %s and Password %s", loginModel.getUsername(), loginModel.getPassword()));
+		// Log the form values 
+		logger.info("Forms with Username of '" + loginModel.getUsername() + "' and Password '" + loginModel.getPassword() + "'.");
 		
 		// Navigate back to the Login View
 		return "redirect:/product/list";

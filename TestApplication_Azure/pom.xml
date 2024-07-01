@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.gcu</groupId>
-	<artifactId>TestApplication</artifactId>
+	<artifactId>TestApplication_Azure</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>TestApplication</name>
 	<description>Test Application for Azure</description>

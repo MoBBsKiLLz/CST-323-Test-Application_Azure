@@ -10,20 +10,20 @@ import org.slf4j.LoggerFactory;
 @SpringBootApplication
 @ComponentScan({"com.gcu"})
 @EnableJpaRepositories(basePackages = "com.gcu.data.repository")
-public class TestApplication {
+public class TestApplication_Azure {
 	// SLF 4 J Logger
-	private static final Logger logger = LoggerFactory.getLogger(TestApplication.class);
+	private static final Logger logger = LoggerFactory.getLogger(TestApplication_Azure.class);
 	
 	/**
 	 * Constructs a new TrendyTrunkApplication.
 	 * This is the default constructor.
 	 */
-	public TestApplication() {
+	public TestApplication_Azure() {
 	    // Default constructor implementation
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(TestApplication.class, args);
+		SpringApplication.run(TestApplication_Azure.class, args);
 		logger.info("Application started successfully.");
 	}
 

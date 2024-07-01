@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layouts/defaultTemplate">
+<head>
+	<meta charset="UTF-8">
+	<title>Product</title>
+</head>
+<body>
+	<h2>Update Product</h2>
+	<div layout:fragment="content">
+		<form action="#" th:action="@{/product/update/{id} (id=${existingProduct.id})}" th:object="${existingProduct}" method="post">
+			<table>
+				<tr>
+					<td class="form-columns form-rows">
+						Name:
+					</td>
+					<td class="form-rows">
+						<input type="text" th:field="*{name}">
+					</td>
+					<td class="errors">
+						<h5 th:if="${#fields.hasErrors('name')}" th:errors="*{name}">
+							Name Error
+						</h5>
+					</td>
+				</tr>
+				<tr>
+					<td class="form-columns form-rows">
+						Description:
+					</td>
+					<td class="form-rows">
+						<input type="text" th:field="*{description}">
+					</td>
+					<td class="errors">
+						<h5 th:if="${#fields.hasErrors('description')}" th:erros="*{description}">
+							Description Error
+						</h5>
+					</td>
+				</tr>
+				<tr>
+					<td class="form-columns form-rows">
+						Price:
+					</td>
+					<td class="form-rows">
+						<input type="number" step="0.01" th:field="*{price}">
+					</td>
+					<td class="errors">
+						<h5 th:if="${#fields.hasErrors('price')}" th:errors="*{price}">
+							Price Error
+						</h5>
+					</td>
+				</tr>
+				<tr>
+					<td class="form-columns form-rows">
+						Quantity:
+					</td>
+					<td class="form-rows">
+						<input type="number" step="1" th:field="*{quantity}">
+					</td>
+					<td class="errors">
+						<h5 th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}">
+							Quantity Error
+						</h5>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" style="text-align:center;">
+						<input class="btn btn-success" type="submit" value="Update" />
+					</td>
+				</tr>
+			</table>
+			<div th:if="${#fields.hasErrors('*')}">List of Errors</div>
+			<div th:each="err : ${#fields.errors('*')}">
+				<span style="color:red" th:text="${err}" class="fieldError"></span>
+			</div>
+		</form>
+	</div>
+</body>
+</html>
