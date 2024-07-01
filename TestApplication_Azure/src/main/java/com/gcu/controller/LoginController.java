@@ -12,12 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.gcu.model.LoginModel;
 
 @Controller
-@RequestMapping("/")
 public class LoginController {
 	// SLF4J Logger
     private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
     
-	@GetMapping("/login")
+	@GetMapping(value={"/", "/login"})
 	public String display(Model model) {
 		// Display Login Form View
 		model.addAttribute("title", "Login Form");
