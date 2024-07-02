@@ -23,12 +23,13 @@ jobs:
 
       - name: Build with Maven
         run: mvn clean install
+        working-directory: ./TestApplication_Azure
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
           name: java-app
-          path: '${{ github.workspace }}/target/*.war'
+          path: '${{ github.workspace }}/TestApplication_Azure/target/*.war'
 
   deploy:
     runs-on: windows-latest
