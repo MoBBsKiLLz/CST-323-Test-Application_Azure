@@ -1,6 +1,3 @@
-# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
-# More GitHub Actions for Azure: https://github.com/Azure/actions
-
 name: Build and deploy WAR app to Azure Web App - TestApplicationMZ
 
 on:
@@ -20,7 +17,7 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: '11'
-          distribution: 'temurin'
+          distribution: 'temurin' # You can choose another distribution like 'adopt', 'zulu', etc.
 
       - name: Build with Maven
         run: mvn clean install
@@ -53,3 +50,10 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_9E007C107C734C84AA97A4C1142E96CC }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_F82FE00C32C14AB0B9B90D3792890642 }}
 
+      - name: Deploy to Azure Web App
+        id: deploy-to-webapp
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: 'TestApplicationMZ'
+          slot-name: 'Production'
+          package: 'java-app/*.war'
