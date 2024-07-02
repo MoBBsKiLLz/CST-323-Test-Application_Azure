@@ -15,7 +15,7 @@ import com.gcu.business.ProductService;
 import com.gcu.business.ProductServiceInterface;
 import com.gcu.model.ProductModel;
 
-import jakarta.validation.Valid;
+import javax.validation.Valid;
 
 /**
  * Controller class for managing product-related operations.
