@@ -93,6 +93,15 @@
 	        <groupId>org.apache.logging.log4j</groupId>
 	        <artifactId>log4j-api</artifactId>
 	    </dependency>
+	    <!-- Netty -->
+	    <dependency>
+		    <groupId>io.netty</groupId>
+		    <artifactId>netty-common</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>io.netty</groupId>
+		    <artifactId>netty-handler</artifactId>
+		</dependency>
 </dependencies>
 	<build>
 		<plugins>
