@@ -30,7 +30,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: java-app
-          path: './target/*.war'
+          path: './TestApplication_Azure/target/*.war'
 
   deploy:
     runs-on: windows-latest
