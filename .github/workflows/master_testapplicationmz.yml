@@ -31,7 +31,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: java-app
-          path: './*.war'
+          path: './target/*.war'
 
   deploy:
     runs-on: windows-latest
@@ -47,7 +47,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: java-app
-          path: './*.war'
+          path: './target'
 
       - name: Debug artifacts
         run: |
