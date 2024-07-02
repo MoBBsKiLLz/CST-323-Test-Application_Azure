@@ -23,14 +23,14 @@ jobs:
         run: |
           mvn clean install
           echo "Artifacts location:"
-          ls -R ./TestApplication_Azure/target/
+          ls -R ./target/
         working-directory: ./TestApplication_Azure
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
           name: java-app
-          path: './TestApplication_Azure/target/*.war'
+          path: './target/*.war'
 
   deploy:
     runs-on: windows-latest
