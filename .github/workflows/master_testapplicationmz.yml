@@ -46,7 +46,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: java-app
-          path: './target/*.war'
+          path: './TestApplication_Azure/target/*.war'
       
       - name: Debug artifacts
         run: |
