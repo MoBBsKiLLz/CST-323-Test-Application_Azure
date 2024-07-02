@@ -11,7 +11,8 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
       - name: Set up Java version
         uses: actions/setup-java@v3
@@ -30,7 +31,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: java-app
-          path: './TestApplication_Azure/target/*.war'
+          path: './target/*.war'
 
   deploy:
     runs-on: windows-latest
@@ -46,8 +47,8 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: java-app
-          path: './TestApplication_Azure/target/*.war'
-      
+          path: './target/*.war'
+
       - name: Debug artifacts
         run: |
           ls -R java-app
