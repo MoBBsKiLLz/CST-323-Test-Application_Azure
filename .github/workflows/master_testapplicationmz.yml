@@ -25,7 +25,7 @@ jobs:
           mvn clean install
           echo "Artifacts location:"
           ls -R ./target/
-        working-directory: ./TestApplication_Azure
+        working-directory: ./TestApplication_Azure/target
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
