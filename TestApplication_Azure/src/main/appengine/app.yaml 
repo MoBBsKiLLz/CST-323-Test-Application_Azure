@@ -1,0 +1,5 @@
+runtime: java17
+	url: /.*
+	script: this field is required, but ignored
+manual scaling:
+	instances: 1
