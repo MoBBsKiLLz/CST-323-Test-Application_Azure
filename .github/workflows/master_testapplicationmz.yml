@@ -1,7 +1,4 @@
-# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
-# More GitHub Actions for Azure: https://github.com/Azure/actions
-
-name: Build and deploy WAR app to Azure Web App - TestApplicationMZ
+name: Build and deploy JAR app to Azure Web App - TestApplicationMZ
 
 on:
   push:
@@ -19,7 +16,7 @@ jobs:
       - name: Set up Java version
         uses: actions/setup-java@v1
         with:
-          java-version: '11'
+          java-version: '17'
 
       - name: Build with Maven
         run: mvn clean install
@@ -49,9 +46,9 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v1
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_1D3E34CCF90A4EDD800B4432FC783410 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_8DA39CAF3C604811B13DBC076E52FD18 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_EDC27CB4F93545ECB1EAABFF86A428DC }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_25287B880DFB4636B606FE41AE885F53 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_B1C7F78490924CF7A9DC469147E366D8 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_15454A7527C445679A5111FB1660F4C0 }}
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
