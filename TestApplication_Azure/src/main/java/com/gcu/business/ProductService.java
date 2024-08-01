@@ -34,7 +34,7 @@ public class ProductService implements ProductServiceInterface {
     public ProductEntity createProduct(String name, String description, float price, int quantity) {
         ProductEntity productEntity = new ProductEntity(name, description, price, quantity);
         if (service.create(productEntity)) {
-            logger.info("Product created: " + productEntity.getName());
+            logger.info("Product created: {}", productEntity.getName());
             return productEntity;
         }
         logger.error("Failed to create product.");
@@ -68,7 +68,7 @@ public class ProductService implements ProductServiceInterface {
     public ProductModel getProductById(Long id) {
         ProductEntity entity = service.findById(id);
         ProductModel product = new ProductModel(entity.getId(), entity.getName(), entity.getDescription(), entity.getPrice(), entity.getQuantity());
-        logger.info("Product id=" + product.getId() + " found.");
+        logger.info("Product id={} found.", product.getId());
         return product;
     }
 
@@ -90,7 +90,7 @@ public class ProductService implements ProductServiceInterface {
         
         // Save the product with updates
         service.update(existingProduct);
-        logger.info("Product id=" + existingProduct.getId() + " has been updated.");
+        logger.info("Product id={} has been updated.", existingProduct.getId());
     }
     
     /**
@@ -104,9 +104,9 @@ public class ProductService implements ProductServiceInterface {
         ProductEntity existingProduct = service.findById(id);
         
         //Delete the identified product
-        service.delete(existingProduct);  
-        
-        logger.info("Product id=" + existingProduct.getId() + " was deleted.");
+        service.delete(existingProduct);
+
+        logger.info("Product id={} was deleted.", existingProduct.getId());
     }
     
     /**
