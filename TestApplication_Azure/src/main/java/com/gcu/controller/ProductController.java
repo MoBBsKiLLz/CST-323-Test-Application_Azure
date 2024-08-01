@@ -2,6 +2,8 @@ package com.gcu.controller;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,6 +28,9 @@ public class ProductController {
     private ProductService productService;
     @Autowired
     private ProductServiceInterface service;
+
+    // SLF4J Logger
+    private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
     
     /**
      * Constructs a ProductController with a ProductService instance.
@@ -45,6 +50,7 @@ public class ProductController {
     {
         model.addAttribute("title", "Product Form");
         model.addAttribute("productModel", new ProductModel());
+        logger.info("Product page retrieved.");
         return "product";
     }
     
@@ -62,6 +68,7 @@ public class ProductController {
         if(bindingResult.hasErrors())
         {
             model.addAttribute("title", "Create Product");
+            logger.info("Proudct was not created. Redirecting to product page.");
             return "product";
         }
     
@@ -69,6 +76,7 @@ public class ProductController {
         productService.createProduct(productModel.getName(), productModel.getDescription(), productModel.getPrice(), productModel.getQuantity());
         
         // Navigates user to the product page to create additional product
+        logger.info("Product was created successfully.");
         return "redirect:/product/list";
     }
     
@@ -83,6 +91,7 @@ public class ProductController {
         List<ProductModel> products = service.getProducts();
         model.addAttribute("title", "Products List");
         model.addAttribute("products", products);
+        logger.info("Product list page retrieved.");
         return "productlist";
     }
     
@@ -101,7 +110,7 @@ public class ProductController {
         // Add attributes to the model
         model.addAttribute("existingProduct", product);
         model.addAttribute("title", "Update Product");
-        
+        logger.info("Edit product page retrieved.");
         return "editproduct";
         
     }
@@ -119,6 +128,7 @@ public class ProductController {
         service.updateProduct(id, product);
                 
         // Navigates user to the product list page
+        logger.info("Product updated successfully.");
         return "redirect:/product/list";
     }
 
@@ -135,6 +145,7 @@ public class ProductController {
         service.deleteProduct(id);
         
         // Navigates user to the product list page
+        logger.info("Product deleted successfully.");
         return "redirect:/product/list";
     }
 }

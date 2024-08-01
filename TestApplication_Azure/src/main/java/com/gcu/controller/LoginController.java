@@ -7,7 +7,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.gcu.model.LoginModel;
 
@@ -21,12 +20,13 @@ public class LoginController {
 		// Display Login Form View
 		model.addAttribute("title", "Login Form");
 		model.addAttribute("loginModel", new LoginModel());
-		
+
+		logger.info("Login page retreived.");
 		return "login";
 	}
 	
 	@PostMapping("/doLogin")
-	public String doLogin(LoginModel loginModel, BindingResult bindingResult, Model model) {
+	public String doLogin(LoginModel loginModel) {
 		// Log the form values 
 		logger.info("Forms with Username of '" + loginModel.getUsername() + "' and Password '" + loginModel.getPassword() + "'.");
 		
