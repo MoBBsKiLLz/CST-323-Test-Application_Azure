@@ -20,7 +20,7 @@ public class LoginController {
 		model.addAttribute("title", "Login Form");
 		model.addAttribute("loginModel", new LoginModel());
 
-		logger.info("Login page retreived.");
+		logger.info("Login page retrieved.");
 		return "login";
 	}
 	
