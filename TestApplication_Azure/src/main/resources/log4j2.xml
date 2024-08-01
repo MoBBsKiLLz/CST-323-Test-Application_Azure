@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="INFO">
   <Appenders>
-    <Console name="console" target="SYSTEM_OUT">
+    <Console name="Console" target="SYSTEM_OUT">
       <PatternLayout pattern="%d %5p [%t] %c{3} - %m%n" />
     </Console>
+    <File name="File" fileName="/home/LogFiles/app.log" append="true">
+      <PatternLayout pattern="%d %5p [%t] %c{3} - %m%n" />
+    </File>
   </Appenders>
   <Loggers>
-    <Logger name="com.azure.core" level="error" additivity="true">
-      <appender-ref ref="console" />
+    <Logger name="com.azure.core" level="error" additivity="false">
+      <AppenderRef ref="Console" />
+      <AppenderRef ref="File" />
     </Logger>
     <Root level="info" additivity="false">
-      <appender-ref ref="console" />
+      <AppenderRef ref="Console" />
+      <AppenderRef ref="File" />
     </Root>
   </Loggers>
 </Configuration>
