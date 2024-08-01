@@ -30,7 +30,7 @@ public class ProductController {
     private ProductServiceInterface service;
 
     // SLF4J Logger
-    private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
+    private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
     
     /**
      * Constructs a ProductController with a ProductService instance.
