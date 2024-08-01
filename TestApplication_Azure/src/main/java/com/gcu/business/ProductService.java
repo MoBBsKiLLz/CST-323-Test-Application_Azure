@@ -51,7 +51,7 @@ public class ProductService implements ProductServiceInterface {
         List<ProductEntity> productsEntity = service.findAll();
         
         // Iterate over the Entity Products and create a list of Domain Products
-        List<ProductModel> productsDomain = new ArrayList<ProductModel>();
+        List<ProductModel> productsDomain = new ArrayList<>();
         for(ProductEntity entity : productsEntity) {
             productsDomain.add(new ProductModel(entity.getId(), entity.getName(), entity.getDescription(), entity.getPrice(), entity.getQuantity()));
         }
